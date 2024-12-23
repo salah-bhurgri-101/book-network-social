@@ -6,7 +6,6 @@ import com.salah.book.file.FileStorageService;
 import com.salah.book.history.BookTransactionHistory;
 import com.salah.book.history.BookTransactionHistoryRepository;
 import com.salah.book.user.CustomUserDetail;
-import jakarta.mail.internet.MimeBodyPart;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

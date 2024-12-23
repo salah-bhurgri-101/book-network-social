@@ -1,11 +1,9 @@
 package com.salah.book.config;
 
 import com.salah.book.user.CustomUserDetail;
-import com.salah.book.user.User;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.Optional;

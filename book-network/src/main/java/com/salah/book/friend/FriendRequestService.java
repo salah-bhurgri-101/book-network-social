@@ -1,6 +1,5 @@
 package com.salah.book.friend;
 
-import com.salah.book.notification.Notification;
 import com.salah.book.notification.NotificationService;
 import com.salah.book.user.User;
 import com.salah.book.user.UserRepository;

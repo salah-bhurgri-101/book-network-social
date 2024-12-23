@@ -3,7 +3,6 @@ package com.salah.book.friend;
 import com.salah.book.user.User;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.validator.constraints.pl.NIP;
 
 @Entity
 @Getter
