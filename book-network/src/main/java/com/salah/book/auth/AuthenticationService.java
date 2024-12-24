@@ -7,6 +7,7 @@ import com.salah.book.security.JwtService;
 import com.salah.book.user.*;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,8 +21,12 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class AuthenticationService {
+
+    @Value("${application.mailing.frontend.activation-url}")
+    private String activationUrl;
 
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
@@ -30,8 +35,7 @@ public class AuthenticationService {
     private final EmailService emailService;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
-    @Value("${application.mailing.frontend.activation-url}")
-    private String activationUrl;
+
 
     public void register(RegistrationRequest request) throws MessagingException {
         var userRole = roleRepository.findByName("USER")
@@ -50,6 +54,7 @@ public class AuthenticationService {
     }
 
     private void sendValidationEmail(User user) throws MessagingException {
+        System.err.println(activationUrl);
         var newToken = generateAndSaveActivation(user);
         emailService.sendEmail(
                 user.getEmail(),
