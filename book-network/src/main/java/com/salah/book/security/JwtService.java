@@ -30,12 +30,14 @@ public class JwtService {
     }
 
     public <T> T extractClaim(String token , Function<Claims ,  T> claimResolver){
+//        System.err.println(token); //for check
         final Claims claims = extractAllClaims(token);
         return claimResolver.apply(claims);
     }
 
     private Claims extractAllClaims(String token) {
-//        return Jwts.parser().setSigningKey(getSignInKey()).build().parseClaimsJws(token).getBody(); sir work
+//        System.err.println(token); //for check
+//        return Jwts.parser().setSigningKey(getSignInKey()).build().parseClaimsJws(token).getBody(); //sir work
         return Jwts.parser().setSigningKey(getSignInKey()).build().parseSignedClaims(token).getBody(); // me work
     }
 

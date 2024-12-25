@@ -22,7 +22,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
         Optional<User> byEmail = userRepositrory.findByEmail(userEmail);
-//        return byEmail.get(); sir work
+        System.out.println("user"+byEmail.get());
+//        return byEmail.get(); // sir work
         return byEmail.map(CustomUserDetail::new).orElseThrow(()->new UsernameNotFoundException("User not found"));
     }
 }

@@ -19,16 +19,17 @@ import {BookResponse} from '../../../../services/models/book-response';
 })
 export class BookCardComponent {
   private _book: BookResponse = {};
-  // private _manage = false;
+  private _manage = false;
   private _bookCover: string | undefined;
 
   get bookCover(): string | undefined {
     if (this._book.cover) {
-      // return 'data:image/jpg;base64,' + this._book.cover
-      return ''
+      return 'data:image/jpg;base64,' + this._book.cover
+      // return ''
     }
     // return 'https://source.unsplash.com/user/c_v_r/1900x800';
-    return this._bookCover
+    return 'https://images.pexels.com/photos/5723941/pexels-photo-5723941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
+    // return this._bookCover
   }
 
   get book(): BookResponse {
@@ -41,44 +42,44 @@ export class BookCardComponent {
   }
 
 
-  // get manage(): boolean {
-  //   return this._manage;
-  // }
+  get manage(): boolean {
+    return this._manage;
+  }
 
-  // @Input()
-  // set manage(value: boolean) {
-  //   this._manage = value;
-  // }
+  @Input()
+  set manage(value: boolean) {
+    this._manage = value;
+  }
 
-  // @Output() private share: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
-  // @Output() private archive: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
-  // @Output() private addToWaitingList: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
-  // @Output() private borrow: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
-  // @Output() private edit: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
-  // @Output() private details: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
+  @Output() private share: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
+  @Output() private archive: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
+  @Output() private addToWaitingList: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
+  @Output() private borrow: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
+  @Output() private edit: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
+  @Output() private details: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
 
-  // onShare() {
-  //   this.share.emit(this._book);
-  // }
+  onShare() {
+    this.share.emit(this._book);
+  }
 
-  // onArchive() {
-  //   this.archive.emit(this._book);
-  // }
+  onArchive() {
+    this.archive.emit(this._book);
+  }
 
-  // onAddToWaitingList() {
-  //   this.addToWaitingList.emit(this._book);
-  // }
+  onAddToWaitingList() {
+    this.addToWaitingList.emit(this._book);
+  }
 
-  // onBorrow() {
-  //   this.borrow.emit(this._book);
-  // }
+  onBorrow() {
+    this.borrow.emit(this._book);
+  }
 
-  // onEdit() {
-  //   this.edit.emit(this._book);
-  // }
+  onEdit() {
+    this.edit.emit(this._book);
+  }
 
-  // onShowDetails() {
-  //   this.details.emit(this._book);
-  // }
+  onShowDetails() {
+    this.details.emit(this._book);
+  }
 }
 

@@ -30,7 +30,7 @@ import { HttpTokenInterceptor } from './services/interceptor/http-token.intercep
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpTokenInterceptor,
-      multi: true
+      multi:true
     }
   ],
   bootstrap: [AppComponent]
