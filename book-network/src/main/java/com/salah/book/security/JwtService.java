@@ -35,6 +35,7 @@ public class JwtService {
         return claimResolver.apply(claims);
     }
 
+    @SuppressWarnings("deprecation")
     private Claims extractAllClaims(String token) {
 //        System.err.println(token); //for check
 //        return Jwts.parser().setSigningKey(getSignInKey()).build().parseClaimsJws(token).getBody(); //sir work
@@ -48,6 +49,7 @@ public class JwtService {
         return buildToken(claims , userDetails , jwtExpiration);
     }
 
+    @SuppressWarnings("deprecation")
     private String buildToken(Map<String, Object> extraClaims, UserDetails userDetails, Long jwtExpiration) {
         var authorities = userDetails.getAuthorities()
                 .stream()
