@@ -10,6 +10,9 @@
 // }
 
 import {Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from 'src/app/services/models';
+import { UserService } from 'src/app/services/services';
 // import {KeycloakService} from '../../../../services/keycloak/keycloak.service';
 
 @Component({
@@ -19,11 +22,15 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  // constructor(
-  //   private keycloakService: KeycloakService
-  // ) {
-  // }
+  user: User = {};
+
+  constructor(
+    private userService: UserService,
+    private route: Router
+  ) {
+  }
     ngOnInit(): void {
+      this.getUser();
       const linkColor = document.querySelectorAll('.nav-link');
       linkColor.forEach(link => {
         if (window.location.href.endsWith(link.getAttribute('href') || '')) {
@@ -36,6 +43,18 @@ export class MenuComponent implements OnInit {
       });
     }
 
+    getUser(){
+      this.userService.getUser()
+      .subscribe({
+        next:(u)=>{
+          this.user = u;
+        }
+      });
+    }
+
+    profile(){
+      this.route.navigate(['profile']);
+    }
   async logout() {
     // await this.keycloakService.logout();
     localStorage.removeItem('token');
